@@ -1,8 +1,6 @@
 const chai = require('chai');
 let assert = chai.assert;
-const ConvertHandler = require('../controllers/convertHandler.js');
-
-let convertHandler = new ConvertHandler();
+const convertHandler = require('../controllers/convertHandler.js');
 
 suite('Unit Tests', function(){
 
