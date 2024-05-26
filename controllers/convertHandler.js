@@ -6,7 +6,7 @@ function ConvertHandler() {
     if (unit == null) return "invalid unit";
     if (num == null && input.length != unit[0].length) return "invalid number";
     num = num ? num[0] : 1;
-    return num;
+    return eval(num);
   };
 
   this.getUnit = function (input) {
