@@ -13,10 +13,15 @@ module.exports = function (app) {
       initNum: convertHandler.getNum(input),
       initUnit: convertHandler.getUnit(input),
     };
-    answer.returnNum = convertHandler.convert(answer.initNum, answer.initUnit);
-    answer.returnUnit = convertHandler.getReturnUnit(answer.initUnit);
-    answer.string = convertHandler.getString(answer.initNum, answer.initUnit, answer.returnNum, answer.returnUnit);
-    res.json(answer);
+    if (answer.initNum == 'invalid number') {
+      res.send('invalid number')
+    } else if (answer.initUnit == 'invalid unit') {
+      res.send('invalid unit')
+    } else {
+      answer.returnNum = convertHandler.convert(answer.initNum, answer.initUnit);
+      answer.returnUnit = convertHandler.getReturnUnit(answer.initUnit);
+      answer.string = convertHandler.getString(answer.initNum, answer.initUnit, answer.returnNum, answer.returnUnit);
+      res.json(answer);
+    }
   })
-
 };
