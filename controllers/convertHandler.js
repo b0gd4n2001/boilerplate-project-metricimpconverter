@@ -1,8 +1,10 @@
 function ConvertHandler() {
 
   this.getNum = function (input) {
-    let num = input.match(/^\d+(?:\.\d+)?(?:\/\d+(?:\.\d+)?)?(?=gal|l|lbs|kg|mi|km)/i)?.[0];
-    let unit = input.match(/(?<=\d*)(?:gal|l|lbs|kg|mi|km)$/i)?.[0];
+    let num = input.match(/^\d+(?:\.\d+)?(?:\/\d+(?:\.\d+)?)?(?=[a-z])/i)?.[0];
+    console.log(num);
+    let unit = input.match(/[a-z].*/i)?.[0];
+    console.log(unit);
     if ((num?.length ?? 0) + (unit?.length ?? 0) !== input?.length) return 'invalid number'
     num = num ?? 1;
     return eval(num);
