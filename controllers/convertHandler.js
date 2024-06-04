@@ -2,9 +2,7 @@ function ConvertHandler() {
 
   this.getNum = function (input) {
     let num = input.match(/^\d+(?:\.\d+)?(?:\/\d+(?:\.\d+)?)?(?=[a-z])/i)?.[0];
-    console.log(num);
     let unit = input.match(/[a-z].*/i)?.[0];
-    console.log(unit);
     if ((num?.length ?? 0) + (unit?.length ?? 0) !== input?.length) return 'invalid number'
     num = num ?? 1;
     return eval(num);
@@ -63,11 +61,34 @@ function ConvertHandler() {
   };
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
-    let result = `${initNum}${initUnit}${returnNum}${returnUnit}`;
-
-    return result;
+    switch (initUnit) {
+      case 'gal':
+        initUnit = 'gallons';
+        returnUnit = 'liters';
+        break;
+      case 'L':
+        initUnit = 'liters';
+        returnUnit = 'gallons';
+        break;
+      case 'lbs':
+        initUnit = 'pounds';
+        returnUnit = 'kilograms';
+        break;
+      case 'kg':
+        initUnit = 'kilograms';
+        returnUnit = 'pounds';
+        break;
+      case 'mi':
+        initUnit = 'miles';
+        returnUnit = 'kilometers';
+        break;
+      case 'km':
+        initUnit = 'kilometers';
+        returnUnit = 'miles';
+        break;
+    };
+    return `${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`;
   };
-
 }
 
 module.exports = ConvertHandler;
