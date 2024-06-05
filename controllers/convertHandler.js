@@ -29,6 +29,8 @@ function ConvertHandler() {
         return 'km';
       case 'km':
         return 'mi';
+      default:
+        return 'invalid unit';
     };
   };
 

@@ -46,26 +46,26 @@ suite('Unit Tests', function () {
         assert.equal(conHan.getString(0,'kg', 0, 'lbs'), "0 kilograms converts to 0 pounds");
         assert.equal(conHan.getString(0,'lbs', 0, 'kg'), "0 pounds converts to 0 kilograms");
     });
-    test('convertHandler should correctly read a whole number input.', function () {
-        assert.isNumber(conHan.getNum('1mi'));
+    test('convertHandler should correctly convert gal to L.', function () {
+        assert.equal(conHan.convert(1, 'gal'), 3.78541);
     });
-    test('convertHandler should correctly read a whole number input.', function () {
-        assert.isNumber(conHan.getNum('1mi'));
+    test('convertHandler should correctly convert L to gal.', function () {
+        assert.equal(conHan.convert(3.78541, 'L'), 1);
     });
-    test('convertHandler should correctly read a whole number input.', function () {
-        assert.isNumber(conHan.getNum('1mi'));
+    test('convertHandler should correctly convert mi to km.', function () {
+        assert.equal(conHan.convert(1, 'mi'), 1.60934 );
     });
-    test('convertHandler should correctly read a whole number input.', function () {
-        assert.isNumber(conHan.getNum('1mi'));
+    test('convertHandler should correctly convert km to mi.', function () {
+        assert.equal(conHan.convert(1.60934, 'km'), 1);
     });
-    test('convertHandler should correctly read a whole number input.', function () {
-        assert.isNumber(conHan.getNum('1mi'));
+    test('convertHandler should correctly convert lbs to kg.', function () {
+        assert.equal(conHan.convert(1, 'lbs'), 0.45359);
     });
-    test('convertHandler should correctly read a whole number input.', function () {
-        assert.isNumber(conHan.getNum('1mi'));
+    test('convertHandler should correctly convert kg to lbs.', function () {
+        assert.equal(conHan.convert(0.45359, 'kg'), 1);
     });
-    test('convertHandler should correctly read a whole number input.', function () {
-        assert.isNumber(conHan.getNum('1mi'));
+    test('convertHandler should correctly return an error for an invalid input unit.', function () {
+        assert.equal(conHan.getReturnUnit('cm'), 'invalid unit');
     });
     
 });
